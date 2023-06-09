@@ -3,9 +3,9 @@ package com.round.insights.app.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.round.insights.databinding.ActivityMainBinding
 import com.round.insights.app.viewmodel.RoundInsightsViewModel
 import com.round.insights.app.viewmodel.RoundInsightsViewModelState
+import com.round.insights.databinding.ActivityRoundInsightsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
@@ -14,39 +14,25 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RoundInsightsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityRoundInsightsBinding
     private val mainScope = MainScope()
     private val roundInsightsViewModel: RoundInsightsViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityRoundInsightsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         mainScope.launch {
             roundInsightsViewModel.roundNumberViewState.collect {
                 when (it) {
-                    is RoundInsightsViewModelState.RoundNumber.GetRoundNumber -> {
+                    is RoundInsightsViewModelState.GetRoundNumber -> {
                         roundInsightsViewModel.getRoundMatches(it.roundNumber)
                     }
-                    is RoundInsightsViewModelState.RoundNumber.Error -> {
-                        // not used yet
-                    }
-                    is RoundInsightsViewModelState.RoundNumber.GetRoundMatches -> {
+                    is RoundInsightsViewModelState.GetRoundMatches -> {
                         it.matches
                     }
-                    is RoundInsightsViewModelState.RoundNumber.ABC -> {
-                        // not used yet
-                    }
-                }
-            }
-
-            roundInsightsViewModel.roundMatchesViewStateFlow.collect {
-                when (it) {
-                    is RoundInsightsViewModelState.RoundMatches.GetRoundMatches -> {
-                        it.matches
-                    }
-                    is RoundInsightsViewModelState.RoundMatches.Error -> {
+                    is RoundInsightsViewModelState.GenericError -> {
                         // not used yet
                     }
                 }

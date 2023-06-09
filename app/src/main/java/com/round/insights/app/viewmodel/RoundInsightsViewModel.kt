@@ -17,15 +17,10 @@ constructor(
     private val useCase: RoundInsightsUseCaseImpl
 ) : ViewModel() {
 
-    private val roundNumberStateFlow: MutableStateFlow<RoundInsightsViewModelState.RoundNumber> =
-        MutableStateFlow(RoundInsightsViewModelState.RoundNumber.Error)
-    val roundNumberViewState: StateFlow<RoundInsightsViewModelState.RoundNumber> =
+    private val roundNumberStateFlow: MutableStateFlow<RoundInsightsViewModelState> =
+        MutableStateFlow(RoundInsightsViewModelState.GenericError)
+    val roundNumberViewState: StateFlow<RoundInsightsViewModelState> =
         roundNumberStateFlow
-
-    private val roundMatchesStateFlow: MutableStateFlow<RoundInsightsViewModelState.RoundMatches> =
-        MutableStateFlow(RoundInsightsViewModelState.RoundMatches.Error)
-    val roundMatchesViewStateFlow: StateFlow<RoundInsightsViewModelState.RoundMatches> =
-        roundMatchesStateFlow
 
     fun getRoundMatches(roundNumber: String) {
         viewModelScope.launch {
@@ -38,11 +33,11 @@ constructor(
         when (result) {
             is RoundInsightsUseCaseState.RoundMatchesInformation.GetRoundMatches -> {
                 roundNumberStateFlow.value =
-                    RoundInsightsViewModelState.RoundNumber.GetRoundMatches(result.matches)
+                    RoundInsightsViewModelState.GetRoundMatches(result.matches)
             }
 
             is RoundInsightsUseCaseState.RoundMatchesInformation.Error -> {
-                roundNumberStateFlow.value = RoundInsightsViewModelState.RoundNumber.Error
+                roundNumberStateFlow.value = RoundInsightsViewModelState.GenericError
             }
         }
     }
@@ -58,11 +53,11 @@ constructor(
         when (result) {
             is RoundInsightsUseCaseState.RoundsInformation.GetRoundNumber -> {
                 roundNumberStateFlow.value =
-                    RoundInsightsViewModelState.RoundNumber.GetRoundNumber(result.round)
+                    RoundInsightsViewModelState.GetRoundNumber(result.round)
             }
 
             is RoundInsightsUseCaseState.RoundsInformation.Error -> {
-                roundNumberStateFlow.value = RoundInsightsViewModelState.RoundNumber.Error
+                roundNumberStateFlow.value = RoundInsightsViewModelState.GenericError
             }
         }
     }
