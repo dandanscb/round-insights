@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/round_insights_menu_championships">
+        <menu>
+            <item
+                android:id="@+id/championship_brasileirao"
+                android:title="@string/round_insights_menu_championships_brasileirao_2023" />
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/championship_leaderboard"
+        android:title="@string/round_insights_menu_championship_leaderboard" />
+
+    <item
+        android:id="@+id/championship_round"
+        android:title="@string/round_insights_menu_championship_round" />
+
+</menu>

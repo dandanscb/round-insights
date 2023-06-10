@@ -26,8 +26,9 @@
             android:id="@+id/round_match_stadium"
             android:layout_width="@dimen/round_insights_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/round_insights_24dp"
+            android:layout_marginEnd="@dimen/round_insights_24dp"
             android:ellipsize="end"
+            android:gravity="center"
             android:singleLine="true"
             app:layout_constraintEnd_toStartOf="@+id/round_match_hour"
             app:layout_constraintStart_toEndOf="@+id/round_match_date"
@@ -39,6 +40,7 @@
             android:layout_width="@dimen/round_insights_0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/round_insights_24dp"
+            android:paddingStart="@dimen/round_insights_24dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -97,10 +99,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/round_match_divider"
+            app:layout_constraintBottom_toBottomOf="@+id/home_team_acronym"
             app:layout_constraintEnd_toStartOf="@+id/out_team_crest"
             app:layout_constraintStart_toEndOf="@+id/home_team_crest"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/home_team_acronym">
 
             <RadioButton
                 android:id="@+id/home_team_guess"
@@ -108,7 +110,7 @@
                 android:layout_height="@dimen/round_insights_30dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/round_insights_8dp"
-                android:buttonTint="@color/green" />
+                android:theme="@style/RadioButtonStyle" />
 
             <RadioButton
                 android:id="@+id/tie_guess"
@@ -116,7 +118,7 @@
                 android:layout_height="@dimen/round_insights_30dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/round_insights_8dp"
-                android:buttonTint="@color/blue" />
+                android:theme="@style/RadioButtonStyle" />
 
             <RadioButton
                 android:id="@+id/out_team_guess"
@@ -124,7 +126,7 @@
                 android:layout_height="@dimen/round_insights_30dp"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/round_insights_8dp"
-                android:buttonTint="@color/red" />
+                android:theme="@style/RadioButtonStyle" />
 
         </RadioGroup>
 
@@ -132,7 +134,7 @@
             android:id="@+id/round_match_divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/round_insights_12dp"
+            android:layout_marginTop="@dimen/round_insights_16dp"
             android:background="@android:color/darker_gray"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/home_team_acronym" />

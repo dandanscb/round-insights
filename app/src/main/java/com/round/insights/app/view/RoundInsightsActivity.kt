@@ -1,11 +1,14 @@
 package com.round.insights.app.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.caverock.androidsvg.SVG
 import com.caverock.androidsvg.SVGImageView
+import com.round.insights.R
 import com.round.insights.app.model.RoundMatchesModel
 import com.round.insights.app.view.adapter.RoundInsightsMatchAdapter
 import com.round.insights.app.view.adapter.RoundInsightsMatchViewHolder
@@ -43,6 +46,36 @@ class RoundInsightsActivity : AppCompatActivity(),
     private fun init() {
         binding = ActivityRoundInsightsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setClickListeners()
+    }
+
+    private fun setClickListeners() {
+        binding.toolbar.backIcon.setOnClickListener {
+            // not used yet
+        }
+        binding.toolbar.menuIcon.setOnClickListener {
+            if (binding.navigationView.isVisible) {
+                binding.navigationView.visibility = View.GONE
+            } else {
+                binding.navigationView.visibility = View.VISIBLE
+            }
+        }
+
+        binding.navigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.championship_brasileirao -> {
+
+                }
+                R.id.championship_round -> {
+
+                }
+                R.id.championship_leaderboard -> {
+
+                }
+            }
+            true
+        }
     }
 
     private fun initViewModel() {

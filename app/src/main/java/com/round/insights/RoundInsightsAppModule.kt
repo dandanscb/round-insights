@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object RoundInsightsAppModule {
 
     const val BASE_URL = "https://api.api-futebol.com.br/v1/"
     const val BRASILEIRAO_URL_SUFIXO = "campeonatos/10/rodadas/"

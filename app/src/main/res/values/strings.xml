@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Round Insights</string>
+
+    <string name="round_insights_menu_championship_leaderboard">Tabela</string>
+    <string name="round_insights_menu_championship_round">Rodadas</string>
+    <string name="round_insights_menu_championships">Campeonato</string>
+    <string name="round_insights_menu_championships_brasileirao_2023">Brasileirão 2023</string>
 </resources>
