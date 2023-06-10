@@ -3,6 +3,7 @@ package com.round.insights.app.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.caverock.androidsvg.SVG
 import com.caverock.androidsvg.SVGImageView
 import com.round.insights.app.model.RoundMatchesModel
@@ -67,6 +68,7 @@ class RoundInsightsActivity : AppCompatActivity(),
     private fun loadMatches(matches: RoundMatchesModel) {
         adapter = RoundInsightsMatchAdapter(this, matches.matches)
 
+        binding.matchesList.layoutManager = LinearLayoutManager(this)
         binding.matchesList.adapter = adapter
     }
 

@@ -92,7 +92,8 @@
             app:layout_constraintEnd_toStartOf="@id/out_team_acronym"
             app:layout_constraintTop_toTopOf="@+id/out_team_acronym" />
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/radio_group_guess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -125,7 +126,7 @@
                 android:layout_marginHorizontal="@dimen/round_insights_8dp"
                 android:buttonTint="@color/red" />
 
-        </LinearLayout>
+        </RadioGroup>
 
         <View
             android:id="@+id/round_match_divider"
