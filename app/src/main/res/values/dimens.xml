@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="round_insights_0dp">0dp</dimen>
+    <dimen name="round_insights_8dp">8dp</dimen>
+    <dimen name="round_insights_12dp">12dp</dimen>
+    <dimen name="round_insights_16dp">16dp</dimen>
+    <dimen name="round_insights_20dp">20dp</dimen>
+    <dimen name="round_insights_24dp">24dp</dimen>
+    <dimen name="round_insights_28dp">28dp</dimen>
+    <dimen name="round_insights_30dp">30dp</dimen>
+    <dimen name="round_insights_32dp">32dp</dimen>
+    <dimen name="round_insights_36dp">36dp</dimen>
+    <dimen name="round_insights_40dp">40dp</dimen>
+    <dimen name="round_insights_44dp">44dp</dimen>
+    <dimen name="round_insights_48dp">48dp</dimen>
+    <dimen name="round_insights_52dp">52dp</dimen>
+    <dimen name="round_insights_56dp">56dp</dimen>
+    <dimen name="round_insights_60dp">60dp</dimen>
+    <dimen name="round_insights_64dp">64dp</dimen>
+    <dimen name="round_insights_68dp">68dp</dimen>
+    <dimen name="round_insights_72dp">72dp</dimen>
+    <dimen name="round_insights_76dp">76dp</dimen>
+    <dimen name="round_insights_80dp">80dp</dimen>
+
+    <dimen name="round_insights_24sp">24sp</dimen>
+    <dimen name="round_insights_28sp">28sp</dimen>
+    <dimen name="round_insights_32sp">32sp</dimen>
+    <dimen name="round_insights_36sp">36sp</dimen>
+    <dimen name="round_insights_40sp">40sp</dimen>
+    <dimen name="round_insights_44sp">44sp</dimen>
+    <dimen name="round_insights_48sp">48sp</dimen>
+    <dimen name="round_insights_52sp">52sp</dimen>
+    <dimen name="round_insights_56sp">56sp</dimen>
+    <dimen name="round_insights_60sp">60sp</dimen>
+    <dimen name="round_insights_64sp">64sp</dimen>
+    <dimen name="round_insights_68sp">68sp</dimen>
+    <dimen name="round_insights_72sp">72sp</dimen>
+    <dimen name="round_insights_76sp">76sp</dimen>
+    <dimen name="round_insights_80sp">80sp</dimen>
+    <dimen name="round_insights_84sp">84sp</dimen>
+    <dimen name="round_insights_88sp">88sp</dimen>
+    <dimen name="round_insights_92sp">92sp</dimen>
+    <dimen name="round_insights_96sp">96sp</dimen>
+    <dimen name="round_insights_100sp">100sp</dimen>
+</resources>

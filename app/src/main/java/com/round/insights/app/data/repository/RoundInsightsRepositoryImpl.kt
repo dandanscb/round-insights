@@ -4,6 +4,8 @@ import com.round.insights.app.data.repository.response.RoundMatchesResponse
 import com.round.insights.app.data.repository.response.RoundResponse
 import com.round.insights.commons.network.ApiService
 import com.round.insights.AppModule
+import com.round.insights.app.data.repository.mapper.RoundMatchesMapperImpl
+import com.round.insights.app.model.RoundMatchesModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -11,7 +13,7 @@ import javax.inject.Inject
 class RoundInsightsRepositoryImpl @Inject constructor(private val apiService: ApiService) :
     RoundInsightsRepository {
 
-    override suspend fun getRoundMatches(roundNumber: String): RoundMatchesResponse? {
+    override suspend fun getRoundMatches(roundNumber: String): RoundMatchesModel? {
         return try {
             val roundResponses: RoundMatchesResponse? = withContext(Dispatchers.IO) {
                 apiService.getRoundMatches(
@@ -19,7 +21,11 @@ class RoundInsightsRepositoryImpl @Inject constructor(private val apiService: Ap
                             AppModule.BRASILEIRAO_URL_SUFIXO + roundNumber
                 ).execute().body()
             }
-            roundResponses
+            roundResponses?.let {
+                RoundMatchesMapperImpl.convertRoundMatchesResponseToModel(roundResponses)
+            } ?: run {
+                null
+            }
         } catch (e: Exception) {
             null
         }

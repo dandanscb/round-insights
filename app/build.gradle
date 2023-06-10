@@ -81,6 +81,9 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
+    // image view
+    implementation 'com.caverock:androidsvg:1.4'
+
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 }
 kapt {

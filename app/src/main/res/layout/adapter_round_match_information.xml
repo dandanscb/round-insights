@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/round_match_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/round_insights_24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/round_match_stadium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="21/06/2023" />
+
+        <TextView
+            android:id="@+id/round_match_stadium"
+            android:layout_width="@dimen/round_insights_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/round_insights_24dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/round_match_hour"
+            app:layout_constraintStart_toEndOf="@+id/round_match_date"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="NEO QUÍMICA ARENA" />
+
+        <TextView
+            android:id="@+id/round_match_hour"
+            android:layout_width="@dimen/round_insights_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/round_insights_24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="16:00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/round_insights_12dp">
+
+        <TextView
+            android:id="@+id/home_team_acronym"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/round_insights_16dp"
+            android:textSize="@dimen/round_insights_28sp"
+            app:layout_constraintBottom_toTopOf="@+id/round_match_divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="COR" />
+
+        <com.caverock.androidsvg.SVGImageView
+            android:id="@+id/home_team_crest"
+            android:layout_width="@dimen/round_insights_48dp"
+            android:layout_height="@dimen/round_insights_48dp"
+            android:layout_marginStart="@dimen/round_insights_12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_team_acronym"
+            app:layout_constraintStart_toEndOf="@id/home_team_acronym"
+            app:layout_constraintTop_toTopOf="@+id/home_team_acronym" />
+
+        <TextView
+            android:id="@+id/out_team_acronym"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/round_insights_16dp"
+            android:textSize="@dimen/round_insights_28sp"
+            app:layout_constraintBottom_toTopOf="@+id/round_match_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/home_team_acronym"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="COR" />
+
+        <com.caverock.androidsvg.SVGImageView
+            android:id="@+id/out_team_crest"
+            android:layout_width="@dimen/round_insights_48dp"
+            android:layout_height="@dimen/round_insights_48dp"
+            android:layout_marginEnd="@dimen/round_insights_12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/out_team_acronym"
+            app:layout_constraintEnd_toStartOf="@id/out_team_acronym"
+            app:layout_constraintTop_toTopOf="@+id/out_team_acronym" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/round_match_divider"
+            app:layout_constraintEnd_toStartOf="@+id/out_team_crest"
+            app:layout_constraintStart_toEndOf="@+id/home_team_crest"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioButton
+                android:id="@+id/home_team_guess"
+                android:layout_width="@dimen/round_insights_30dp"
+                android:layout_height="@dimen/round_insights_30dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/round_insights_8dp"
+                android:buttonTint="@color/green" />
+
+            <RadioButton
+                android:id="@+id/tie_guess"
+                android:layout_width="@dimen/round_insights_30dp"
+                android:layout_height="@dimen/round_insights_30dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/round_insights_8dp"
+                android:buttonTint="@color/blue" />
+
+            <RadioButton
+                android:id="@+id/out_team_guess"
+                android:layout_width="@dimen/round_insights_30dp"
+                android:layout_height="@dimen/round_insights_30dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="@dimen/round_insights_8dp"
+                android:buttonTint="@color/red" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/round_match_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/round_insights_12dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_team_acronym" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

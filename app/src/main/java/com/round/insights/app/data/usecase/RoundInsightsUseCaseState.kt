@@ -1,6 +1,6 @@
 package com.round.insights.app.data.usecase
 
-import com.round.insights.app.data.repository.response.RoundMatchesResponse
+import com.round.insights.app.model.RoundMatchesModel
 
 sealed class RoundInsightsUseCaseState {
 
@@ -10,7 +10,7 @@ sealed class RoundInsightsUseCaseState {
     }
 
     sealed class RoundMatchesInformation {
-        data class GetRoundMatches(val matches: RoundMatchesResponse) : RoundMatchesInformation()
+        data class GetRoundMatches(val matches: RoundMatchesModel) : RoundMatchesInformation()
         object Error : RoundMatchesInformation()
     }
 }
