@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Round Insights</string>
 
+    <string name="round_insights_championship_title">Round Insights</string>
+    <string name="round_insights_championship_description">Quais são os favoritos ao título? \nQuais correm risco de cair? \nNavegue, veja as informações e faça a sua avaliação</string>
+    <string name="round_insights_championship_button">Brasileirão 2023</string>
+
     <string name="round_insights_menu_championship_leaderboard">Tabela</string>
     <string name="round_insights_menu_championship_round">Rodadas</string>
     <string name="round_insights_menu_championships">Campeonato</string>

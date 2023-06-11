@@ -22,7 +22,7 @@ object RoundInsightsAppModule {
     const val BRASILEIRAO_URL_SUFIXO = "campeonatos/10/rodadas/"
 
     private const val TOKEN_TYPE = "Bearer"
-    private const val ACCESS_TOKEN = "test_c40cca33362d4684448435a7f786c3"
+    private const val ACCESS_TOKEN = "live_3738b9c0300714fcdc3465096819bc"
 
     @Provides
     @Singleton
