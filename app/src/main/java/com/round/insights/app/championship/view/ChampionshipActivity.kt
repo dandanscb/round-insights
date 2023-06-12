@@ -28,6 +28,11 @@ class ChampionshipActivity : AppCompatActivity() {
     }
 
     private fun setClickListeners() {
+        binding.continueButton.setOnClickListener {
+            val intent = Intent(this, RoundInsightsActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.toolbar.backIcon.visibility = View.GONE
         binding.toolbar.backIcon.setOnClickListener {
             // not used yet
@@ -48,7 +53,6 @@ class ChampionshipActivity : AppCompatActivity() {
                 R.id.championship_brasileirao -> {
                     val intent = Intent(this, RoundInsightsActivity::class.java)
                     startActivity(intent)
-                    finish()
                 }
 
                 R.id.championship_round -> {

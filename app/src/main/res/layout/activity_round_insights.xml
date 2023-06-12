@@ -7,11 +7,29 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:menu="@menu/home_menu" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="@dimen/round_insights_0dp"
+        android:layout_marginBottom="@dimen/round_insights_36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/matches_list"
@@ -23,4 +41,12 @@
             tools:listitem="@layout/adapter_round_match_information" />
 
     </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/shimmer"
+        layout="@layout/shimmer_round_insights"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_header"
+        android:layout_marginTop="@dimen/round_insights_2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -55,10 +56,11 @@
 
         <TextView
             android:id="@+id/home_team_acronym"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/round_insights_64dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/round_insights_16dp"
-            android:textSize="@dimen/round_insights_28sp"
+            android:gravity="center"
+            android:textSize="@dimen/round_insights_24sp"
             app:layout_constraintBottom_toTopOf="@+id/round_match_divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -66,30 +68,31 @@
 
         <com.caverock.androidsvg.SVGImageView
             android:id="@+id/home_team_crest"
-            android:layout_width="@dimen/round_insights_48dp"
-            android:layout_height="@dimen/round_insights_48dp"
-            android:layout_marginStart="@dimen/round_insights_12dp"
+            android:layout_width="@dimen/round_insights_44dp"
+            android:layout_height="@dimen/round_insights_44dp"
+            android:layout_marginStart="@dimen/round_insights_8dp"
             app:layout_constraintBottom_toBottomOf="@+id/home_team_acronym"
             app:layout_constraintStart_toEndOf="@id/home_team_acronym"
             app:layout_constraintTop_toTopOf="@+id/home_team_acronym" />
 
         <TextView
             android:id="@+id/out_team_acronym"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/round_insights_64dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/round_insights_16dp"
-            android:textSize="@dimen/round_insights_28sp"
+            android:textSize="@dimen/round_insights_24sp"
+            android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/round_match_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/home_team_acronym"
             app:layout_constraintVertical_bias="0.0"
-            tools:text="COR" />
+            tools:text="AMG" />
 
         <com.caverock.androidsvg.SVGImageView
             android:id="@+id/out_team_crest"
-            android:layout_width="@dimen/round_insights_48dp"
-            android:layout_height="@dimen/round_insights_48dp"
-            android:layout_marginEnd="@dimen/round_insights_12dp"
+            android:layout_width="@dimen/round_insights_44dp"
+            android:layout_height="@dimen/round_insights_44dp"
+            android:layout_marginEnd="@dimen/round_insights_8dp"
             app:layout_constraintBottom_toBottomOf="@+id/out_team_acronym"
             app:layout_constraintEnd_toStartOf="@id/out_team_acronym"
             app:layout_constraintTop_toTopOf="@+id/out_team_acronym" />
