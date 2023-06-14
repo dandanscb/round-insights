@@ -53,7 +53,6 @@ class RoundMatchViewHolder(
     }
 
     interface RoundInsightsMatchViewHolderCallback {
-        fun setUrlImage(urlImage: String, svgImageView: SVGImageView)
         fun setUrlImageRadioButton(urlImage: String, svgImageView: SVGImageView, radioButton: RadioButton)
     }
 

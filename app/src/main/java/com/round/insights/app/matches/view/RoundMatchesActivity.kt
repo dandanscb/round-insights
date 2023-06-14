@@ -122,21 +122,6 @@ class RoundMatchesActivity : AppCompatActivity(),
         mainScope.cancel()
     }
 
-    override fun setUrlImage(urlImage: String, svgImageView: SVGImageView) {
-        Thread {
-            val url = URL(urlImage)
-            val connection = url.openConnection() as HttpURLConnection
-            connection.connect()
-
-            val inputStream: InputStream = connection.inputStream
-            val svg = SVG.getFromInputStream(inputStream)
-
-            runOnUiThread {
-                svgImageView.setSVG(svg)
-            }
-        }.start()
-    }
-
     override fun setUrlImageRadioButton(
         urlImage: String,
         svgImageView: SVGImageView,
@@ -175,7 +160,7 @@ class RoundMatchesActivity : AppCompatActivity(),
         val canvas = Canvas(bitmap)
         svgImageView.draw(canvas)
         val drawable = BitmapDrawable(resources, bitmap)
-        val topMargin = resources.getDimensionPixelSize(R.dimen.round_insights_2dp)
+        val topMargin = resources.getDimensionPixelSize(R.dimen.round_insights_4dp)
         val layerDrawable = LayerDrawable(arrayOf(drawable))
         layerDrawable.setLayerInset(ZERO, ZERO, topMargin, ZERO, ZERO)
         radioButton.setCompoundDrawablesWithIntrinsicBounds(null, layerDrawable, null, null)
