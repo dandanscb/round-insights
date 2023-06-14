@@ -1,27 +1,27 @@
 package com.round.insights.app.matches.data.usecase
 
-import com.round.insights.app.matches.data.repository.RoundInsightsRepositoryImpl
+import com.round.insights.app.matches.data.repository.RoundMatchesRepositoryImpl
 import com.round.insights.app.matches.data.repository.response.RoundResponse
 import javax.inject.Inject
 
-class RoundInsightsUseCaseImpl @Inject constructor(private val repository: RoundInsightsRepositoryImpl) :
-    RoundInsightsUseCase {
+class RoundMatchesUseCaseImpl @Inject constructor(private val repository: RoundMatchesRepositoryImpl) :
+    RoundMatchesUseCase {
 
-    override suspend fun getRoundMatches(roundNumber: String): RoundInsightsUseCaseState.RoundMatchesInformation {
+    override suspend fun getRoundMatches(roundNumber: String): RoundMatchesUseCaseState.RoundMatchesInformation {
         val response = repository.getRoundMatches(roundNumber)
         response?.let {
-            return RoundInsightsUseCaseState.RoundMatchesInformation.GetRoundMatches(it)
+            return RoundMatchesUseCaseState.RoundMatchesInformation.GetRoundMatches(it)
         } ?: run {
-            return RoundInsightsUseCaseState.RoundMatchesInformation.Error
+            return RoundMatchesUseCaseState.RoundMatchesInformation.Error
         }
     }
 
-    override suspend fun getRoundNumber(): RoundInsightsUseCaseState.RoundsInformation {
+    override suspend fun getRoundNumber(): RoundMatchesUseCaseState.RoundsInformation {
         val response = repository.getRoundsInformation()
         response?.let {
-            return RoundInsightsUseCaseState.RoundsInformation.GetRoundNumber(discoverRound(it))
+            return RoundMatchesUseCaseState.RoundsInformation.GetRoundNumber(discoverRound(it))
         } ?: run {
-            return RoundInsightsUseCaseState.RoundsInformation.Error
+            return RoundMatchesUseCaseState.RoundsInformation.Error
         }
     }
 

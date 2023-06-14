@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.round.insights.app.matches.view.RoundInsightsActivity"
+            android:name="com.round.insights.app.matches.view.RoundMatchesActivity"
             android:exported="true"/>
     </application>
 

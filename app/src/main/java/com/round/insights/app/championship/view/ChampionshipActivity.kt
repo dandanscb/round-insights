@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.round.insights.R
-import com.round.insights.app.matches.view.RoundInsightsActivity
+import com.round.insights.app.matches.view.RoundMatchesActivity
 import com.round.insights.databinding.ActivityChampionshipBinding
 
 class ChampionshipActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class ChampionshipActivity : AppCompatActivity() {
 
     private fun setClickListeners() {
         binding.continueButton.setOnClickListener {
-            val intent = Intent(this, RoundInsightsActivity::class.java)
+            val intent = Intent(this, RoundMatchesActivity::class.java)
             startActivity(intent)
         }
 
@@ -51,7 +51,7 @@ class ChampionshipActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.championship_brasileirao -> {
-                    val intent = Intent(this, RoundInsightsActivity::class.java)
+                    val intent = Intent(this, RoundMatchesActivity::class.java)
                     startActivity(intent)
                 }
 

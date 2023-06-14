@@ -2,7 +2,7 @@ package com.round.insights.app.matches.data.usecase
 
 import com.round.insights.app.matches.model.RoundMatchesModel
 
-sealed class RoundInsightsUseCaseState {
+sealed class RoundMatchesUseCaseState {
 
     sealed class RoundsInformation {
         data class GetRoundNumber(val round: String) : RoundsInformation()

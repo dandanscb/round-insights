@@ -22,7 +22,12 @@
     <dimen name="round_insights_72dp">72dp</dimen>
     <dimen name="round_insights_76dp">76dp</dimen>
     <dimen name="round_insights_80dp">80dp</dimen>
+    <dimen name="round_insights_84dp">84dp</dimen>
+    <dimen name="round_insights_88dp">88dp</dimen>
 
+    <dimen name="round_insights_4sp">4sp</dimen>
+    <dimen name="round_insights_8sp">8sp</dimen>
+    <dimen name="round_insights_12sp">12sp</dimen>
     <dimen name="round_insights_16sp">16sp</dimen>
     <dimen name="round_insights_20sp">20sp</dimen>
     <dimen name="round_insights_24sp">24sp</dimen>

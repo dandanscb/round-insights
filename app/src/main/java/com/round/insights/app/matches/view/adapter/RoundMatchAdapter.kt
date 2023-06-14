@@ -6,21 +6,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.round.insights.R
 import com.round.insights.app.matches.model.MatchesModel
 
-class RoundInsightsMatchAdapter(
-    private val callback: RoundInsightsMatchViewHolder.RoundInsightsMatchViewHolderCallback,
+class RoundMatchAdapter(
+    private val callback: RoundMatchViewHolder.RoundInsightsMatchViewHolderCallback,
     private val data: List<MatchesModel>
-) : RecyclerView.Adapter<RoundInsightsMatchViewHolder>() {
+) : RecyclerView.Adapter<RoundMatchViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): RoundInsightsMatchViewHolder {
+    ): RoundMatchViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.adapter_round_match_information, parent, false)
-        return RoundInsightsMatchViewHolder(callback, itemView)
+        return RoundMatchViewHolder(callback, itemView)
     }
 
-    override fun onBindViewHolder(holder: RoundInsightsMatchViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RoundMatchViewHolder, position: Int) {
         val currentItem = data[position]
         holder.bind(currentItem)
     }

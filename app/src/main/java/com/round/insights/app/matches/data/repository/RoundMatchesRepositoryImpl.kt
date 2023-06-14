@@ -10,8 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class RoundInsightsRepositoryImpl @Inject constructor(private val apiService: ApiService) :
-    RoundInsightsRepository {
+class RoundMatchesRepositoryImpl @Inject constructor(private val apiService: ApiService) :
+    RoundMatchesRepository {
 
     override suspend fun getRoundMatches(roundNumber: String): RoundMatchesModel? {
         return try {
