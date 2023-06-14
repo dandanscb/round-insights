@@ -32,18 +32,17 @@
             android:id="@+id/home_team_crest"
             android:layout_width="@dimen/round_insights_52dp"
             android:layout_height="@dimen/round_insights_52dp"
-            android:visibility="invisible"
             android:layout_marginStart="@dimen/round_insights_36dp"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioButton
-            android:id="@+id/radioButton"
-            android:background="@drawable/custom_radio_selector"
+            android:id="@+id/home_team_radio_button"
             android:layout_width="@dimen/round_insights_60dp"
             android:layout_height="@dimen/round_insights_88dp"
-            android:gravity="top"
             android:layout_marginStart="@dimen/round_insights_32dp"
+            android:background="@drawable/custom_radio_selector"
             android:button="@null"
             android:drawablePadding="@dimen/round_insights_20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +76,19 @@
             android:layout_width="@dimen/round_insights_52dp"
             android:layout_height="@dimen/round_insights_52dp"
             android:layout_marginEnd="@dimen/round_insights_36dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/out_team_radio_button"
+            android:layout_width="@dimen/round_insights_60dp"
+            android:layout_height="@dimen/round_insights_88dp"
+            android:layout_marginEnd="@dimen/round_insights_32dp"
+            android:background="@drawable/custom_radio_selector"
+            android:button="@null"
+            android:drawablePadding="@dimen/round_insights_20dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -102,6 +113,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="21/06/2023 16:00" />
+
+        <RadioButton
+            android:id="@+id/tie_radio_button"
+            android:layout_width="@dimen/round_insights_52dp"
+            android:layout_height="@dimen/round_insights_52dp"
+            android:background="@drawable/custom_radio_selector"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_tie"
+            android:drawablePadding="@dimen/round_insights_20dp"
+            app:layout_constraintBottom_toTopOf="@+id/round_match_stadium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/round_match_date" />
 
         <TextView
             android:id="@+id/round_match_stadium"

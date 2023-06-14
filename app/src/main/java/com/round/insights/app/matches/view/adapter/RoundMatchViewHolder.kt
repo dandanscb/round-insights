@@ -18,21 +18,38 @@ class RoundMatchViewHolder(
 
     private val homeTeamAcronym: TextView = itemView.findViewById(R.id.home_team_acronym)
     private val homeTeamCrest: SVGImageView = itemView.findViewById(R.id.home_team_crest)
+    private val homeTeamRadioButton: RadioButton = itemView.findViewById(R.id.home_team_radio_button)
+
     private val outTeamAcronym: TextView = itemView.findViewById(R.id.out_team_acronym)
     private val outTeamCrest: SVGImageView = itemView.findViewById(R.id.out_team_crest)
-    private val radioButton: RadioButton = itemView.findViewById(R.id.radioButton)
+    private val outTeamRadioButton: RadioButton = itemView.findViewById(R.id.out_team_radio_button)
+
+    private val tieRadioButton: RadioButton = itemView.findViewById(R.id.tie_radio_button)
+
+
+    private val radioButtons = listOf(
+        homeTeamRadioButton,
+        outTeamRadioButton,
+        tieRadioButton
+    )
 
     fun bind(data: MatchesModel) {
         roundMatchDate.text = "${data.matchDate}$SPACE${data.matchHour}"
         roundMatchStadium.text = data.stadium.stadiumName
 
         homeTeamAcronym.text = data.homeTeam.teamAcronym
-        callback.setUrlImageRadioButton(data.homeTeam.teamCrest, homeTeamCrest, radioButton)
-        radioButton.setCompoundDrawablesWithIntrinsicBounds(homeTeamCrest.drawable, null, null, null)
+        callback.setUrlImageRadioButton(data.homeTeam.teamCrest, homeTeamCrest, homeTeamRadioButton)
 
         outTeamAcronym.text = data.outTeam.teamAcronym
-        callback.setUrlImage(data.outTeam.teamCrest, outTeamCrest)
+        callback.setUrlImageRadioButton(data.outTeam.teamCrest, outTeamCrest, outTeamRadioButton)
 
+        radioButtons.forEachIndexed { index, radioButton ->
+            radioButton.setOnClickListener {
+                radioButtons.forEachIndexed { innerIndex, innerRadioButton ->
+                    innerRadioButton.isChecked = innerIndex == index
+                }
+            }
+        }
     }
 
     interface RoundInsightsMatchViewHolderCallback {
