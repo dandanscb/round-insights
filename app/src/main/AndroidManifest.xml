@@ -20,9 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.round.insights.app.matches.view.RoundMatchesActivity"
-            android:exported="true"/>
     </application>
 
 </manifest>

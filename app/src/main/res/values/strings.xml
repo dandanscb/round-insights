@@ -5,8 +5,11 @@
     <string name="round_insights_championship_description">Quais são os favoritos ao título? \nQuais correm risco de cair? \nNavegue, veja as informações e faça a sua avaliação</string>
     <string name="round_insights_championship_button">Brasileirão 2023</string>
 
-    <string name="round_insights_menu_championship_leaderboard">Tabela</string>
-    <string name="round_insights_menu_championship_round">Rodadas</string>
-    <string name="round_insights_menu_championships">Campeonato</string>
+    <string name="round_insights_footer_championship_leaderboard">Tabela</string>
+    <string name="round_insights_footer_championship_round">Rodadas</string>
+    <string name="round_insights_footer_championships_profile">Perfil</string>
     <string name="round_insights_menu_championships_brasileirao_2023">Brasileirão 2023</string>
+
+
+    <string name="round_insights_round_matches_round_number">RODADA %s</string>
 </resources>

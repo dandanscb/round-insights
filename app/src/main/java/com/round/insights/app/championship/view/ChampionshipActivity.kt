@@ -1,22 +1,22 @@
 package com.round.insights.app.championship.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import com.round.insights.R
-import com.round.insights.app.matches.view.RoundMatchesActivity
+import com.round.insights.app.leaderboard.view.LeaderboardFragment
+import com.round.insights.app.matches.view.RoundMatchesFragment
+import com.round.insights.app.profile.view.ProfileFragment
 import com.round.insights.databinding.ActivityChampionshipBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ChampionshipActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChampionshipBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_championship)
-
         init()
     }
 
@@ -24,46 +24,26 @@ class ChampionshipActivity : AppCompatActivity() {
         binding = ActivityChampionshipBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        replaceFragment(ProfileFragment.newInstance())
         setClickListeners()
     }
 
     private fun setClickListeners() {
-        binding.continueButton.setOnClickListener {
-            val intent = Intent(this, RoundMatchesActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.toolbar.backIcon.visibility = View.GONE
-        binding.toolbar.backIcon.setOnClickListener {
-            // not used yet
-        }
-
-        binding.toolbar.toolbarText.visibility = View.GONE
-
-        binding.toolbar.menuIcon.setOnClickListener {
-            if (binding.navigationView.isVisible) {
-                binding.navigationView.visibility = View.GONE
-            } else {
-                binding.navigationView.visibility = View.VISIBLE
-            }
-        }
-
-        binding.navigationView.setNavigationItemSelectedListener {
+        binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.championship_brasileirao -> {
-                    val intent = Intent(this, RoundMatchesActivity::class.java)
-                    startActivity(intent)
-                }
-
-                R.id.championship_round -> {
-
-                }
-
-                R.id.championship_leaderboard -> {
-
-                }
+                R.id.profile_footer -> replaceFragment(ProfileFragment.newInstance())
+                R.id.round_footer -> replaceFragment(RoundMatchesFragment.newInstance())
+                R.id.leaderboard_footer -> replaceFragment(LeaderboardFragment.newInstance())
+                else -> {}
             }
             true
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
     }
 }

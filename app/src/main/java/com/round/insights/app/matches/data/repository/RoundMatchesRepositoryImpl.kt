@@ -1,11 +1,11 @@
 package com.round.insights.app.matches.data.repository
 
 import com.round.insights.commons.network.ApiService
-import com.round.insights.RoundInsightsAppModule
 import com.round.insights.app.matches.data.repository.mapper.RoundMatchesMapperImpl
 import com.round.insights.app.matches.data.repository.response.RoundMatchesResponse
 import com.round.insights.app.matches.data.repository.response.RoundResponse
 import com.round.insights.app.matches.model.RoundMatchesModel
+import com.round.insights.commons.network.ApiServiceImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -17,8 +17,8 @@ class RoundMatchesRepositoryImpl @Inject constructor(private val apiService: Api
         return try {
             val roundResponses: RoundMatchesResponse? = withContext(Dispatchers.IO) {
                 apiService.getRoundMatches(
-                    RoundInsightsAppModule.BASE_URL +
-                            RoundInsightsAppModule.BRASILEIRAO_URL_SUFIXO + roundNumber
+                    ApiServiceImpl.BASE_URL +
+                            ApiServiceImpl.BRASILEIRAO_URL_SUFIXO + roundNumber
                 ).execute().body()
             }
             roundResponses?.let {
@@ -35,8 +35,8 @@ class RoundMatchesRepositoryImpl @Inject constructor(private val apiService: Api
         return try {
             val roundResponses: List<RoundResponse>? = withContext(Dispatchers.IO) {
                 apiService.getRoundsInformation(
-                    RoundInsightsAppModule.BASE_URL +
-                            RoundInsightsAppModule.BRASILEIRAO_URL_SUFIXO
+                    ApiServiceImpl.BASE_URL +
+                            ApiServiceImpl.BRASILEIRAO_URL_SUFIXO
                 ).execute().body()
             }
             roundResponses
