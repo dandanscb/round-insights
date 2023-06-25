@@ -7,6 +7,7 @@ import com.round.insights.R
 import com.round.insights.app.leaderboard.view.LeaderboardFragment
 import com.round.insights.app.matches.view.RoundMatchesFragment
 import com.round.insights.app.profile.view.ProfileFragment
+import com.round.insights.commons.model.RoundInsightsUser
 import com.round.insights.databinding.ActivityChampionshipBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ChampionshipActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChampionshipBinding
+    private lateinit var user: RoundInsightsUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,5 +47,12 @@ class ChampionshipActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout, fragment)
         fragmentTransaction.commit()
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(user: RoundInsightsUser): AppCompatActivity = ChampionshipActivity().also() {
+            it.user = user
+        }
     }
 }

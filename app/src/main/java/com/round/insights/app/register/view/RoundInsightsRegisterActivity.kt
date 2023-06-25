@@ -6,14 +6,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.round.insights.app.login.view.RoundInsightsLoginActivity
 import com.round.insights.databinding.ActivityRegisterBinding
+import java.lang.Exception
 
 class RoundInsightsRegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var auth: FirebaseAuth
+    private val auth = Firebase.auth
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +27,6 @@ class RoundInsightsRegisterActivity : AppCompatActivity() {
     private fun init() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        auth = Firebase.auth
 
         binding.registerButton.setOnClickListener {
             performSignUp()
@@ -43,37 +45,56 @@ class RoundInsightsRegisterActivity : AppCompatActivity() {
         val inputPassword = binding.registerPassword.text.toString()
 
         if (inputEmail.isEmpty() || inputPassword.isEmpty()) {
-            Toast.makeText(
-                this,
-                "Please fill all fields",
-                Toast.LENGTH_SHORT,
-            ).show()
+            displayToast("Please fill all fields.")
             return
         }
 
         auth.createUserWithEmailAndPassword(inputEmail, inputPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    startLoginActivity()
-                    Toast.makeText(
-                        this,
-                        "Register Success",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                    registerIsSuccessful(inputEmail)
                 } else {
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                    registerIsNotSuccessful()
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(
-                    this,
-                    "Error occurred ${it.localizedMessage}",
-                    Toast.LENGTH_SHORT,
-                ).show()
+                registerOnFailure(it)
             }
+    }
+
+    private fun registerIsSuccessful(inputEmail: String) {
+        val inputName = binding.registerName.text.toString()
+        val inputNickname = binding.registerNickname.text.toString()
+
+        val userMap = hashMapOf(
+            "name" to inputName,
+            "nickname" to inputNickname,
+            "email" to inputEmail
+        )
+
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+        db.collection("user").document(userId).set(userMap)
+            .addOnSuccessListener { displayToast("Successfully Added!") }
+            .addOnFailureListener { displayToast("Failed Added!") }
+
+        startLoginActivity()
+        displayToast("Register Success.")
+    }
+
+    private fun registerIsNotSuccessful() {
+        displayToast("Authentication failed.")
+    }
+
+    private fun registerOnFailure(exception: Exception) {
+        displayToast("Error occurred ${exception.localizedMessage}")
+    }
+
+    private fun displayToast(text: String) {
+        Toast.makeText(
+            this,
+            text,
+            Toast.LENGTH_SHORT,
+        ).show()
     }
 }

@@ -23,11 +23,27 @@
         android:textSize="@dimen/round_insights_16sp" />
 
     <EditText
-        android:id="@+id/register_email"
+        android:id="@+id/register_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/round_insights_16dp"
         android:layout_marginTop="@dimen/round_insights_48dp"
+        android:hint="@string/round_insights_login_name" />
+
+    <EditText
+        android:id="@+id/register_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/round_insights_16dp"
+        android:layout_marginTop="@dimen/round_insights_12dp"
+        android:hint="@string/round_insights_login_nickname" />
+
+    <EditText
+        android:id="@+id/register_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/round_insights_16dp"
+        android:layout_marginTop="@dimen/round_insights_20dp"
         android:hint="@string/round_insights_login_username" />
 
     <EditText
@@ -66,9 +82,9 @@
             android:layout_marginStart="@dimen/round_insights_4dp"
             android:clickable="true"
             android:focusable="true"
+            android:text="@string/round_insights_register_login"
             android:textColor="@color/round_insights_blue"
-            android:textStyle="bold"
-            android:text="@string/round_insights_register_login" />
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -6,15 +6,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.round.insights.app.championship.view.ChampionshipActivity
 import com.round.insights.app.register.view.RoundInsightsRegisterActivity
+import com.round.insights.commons.model.RoundInsightsUser
 import com.round.insights.databinding.ActivityLoginBinding
+import java.lang.Exception
 
 class RoundInsightsLoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth: FirebaseAuth
+    private val auth = Firebase.auth
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +28,6 @@ class RoundInsightsLoginActivity : AppCompatActivity() {
     private fun init() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        auth = Firebase.auth
 
         binding.loginButton.setOnClickListener {
             performLogin()
@@ -42,39 +44,53 @@ class RoundInsightsLoginActivity : AppCompatActivity() {
         val inputPassword = binding.loginPassword.text.toString()
 
         if (inputEmail.isEmpty() || inputPassword.isEmpty()) {
-            Toast.makeText(
-                this,
-                "Please fill all fields",
-                Toast.LENGTH_SHORT,
-            ).show()
+            displayToast("Please fill all fields.")
             return
         }
 
         auth.signInWithEmailAndPassword(inputEmail, inputPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val intent = Intent(this, ChampionshipActivity::class.java)
-                    startActivity(intent)
-
-                    Toast.makeText(
-                        baseContext,
-                        "Login Success.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                    loginIsSuccessful()
                 } else {
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                    loginAuthenticationFailed()
                 }
+            }.addOnFailureListener {
+                loginOnFailure(it)
             }
-            .addOnFailureListener {
-                Toast.makeText(
-                    this,
-                    "Error occurred ${it.localizedMessage}",
-                    Toast.LENGTH_SHORT,
-                ).show()
+    }
+
+    private fun loginIsSuccessful() {
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+        val ref = db.collection("user").document(userId)
+
+        ref.get().addOnSuccessListener {
+            it?.let {
+                val user = RoundInsightsUser(
+                    name = it.data?.get("name")?.toString() ?: "",
+                    nickname = it.data?.get("nickname")?.toString() ?: "",
+                    email = it.data?.get("email")?.toString() ?: ""
+                )
+                val intent = Intent(this, ChampionshipActivity::class.java)
+                startActivity(intent)
             }
+        }
+            .addOnFailureListener { displayToast("Failed!") }
+    }
+
+    private fun loginAuthenticationFailed() {
+        displayToast("Authentication failed.")
+    }
+
+    private fun loginOnFailure(exception: Exception) {
+        displayToast("Error occurred ${exception.localizedMessage}")
+    }
+
+    private fun displayToast(text: String) {
+        Toast.makeText(
+            this,
+            text,
+            Toast.LENGTH_SHORT,
+        ).show()
     }
 }
