@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.round.insights.app.login.view.RoundInsightsLoginActivity
@@ -41,10 +40,12 @@ class RoundInsightsRegisterActivity : AppCompatActivity() {
     }
 
     private fun performSignUp() {
+        val inputName = binding.registerName.text.toString()
+        val inputNickname = binding.registerNickname.text.toString()
         val inputEmail = binding.registerEmail.text.toString()
         val inputPassword = binding.registerPassword.text.toString()
 
-        if (inputEmail.isEmpty() || inputPassword.isEmpty()) {
+        if (inputEmail.isEmpty() || inputPassword.isEmpty() || inputName.isEmpty() || inputNickname.isEmpty()) {
             displayToast("Please fill all fields.")
             return
         }
@@ -52,7 +53,7 @@ class RoundInsightsRegisterActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(inputEmail, inputPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    registerIsSuccessful(inputEmail)
+                    registerIsSuccessful(inputName, inputNickname, inputEmail)
                 } else {
                     registerIsNotSuccessful()
                 }
@@ -62,10 +63,7 @@ class RoundInsightsRegisterActivity : AppCompatActivity() {
             }
     }
 
-    private fun registerIsSuccessful(inputEmail: String) {
-        val inputName = binding.registerName.text.toString()
-        val inputNickname = binding.registerNickname.text.toString()
-
+    private fun registerIsSuccessful(inputName: String, inputNickname: String, inputEmail: String) {
         val userMap = hashMapOf(
             "name" to inputName,
             "nickname" to inputNickname,
