@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/round_insights_12dp"
+        android:text="@string/app_name"
+        android:textColor="@color/round_insights_gray"
+        android:textSize="@dimen/round_insights_24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/login_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/round_insights_16dp"
+        android:layout_marginTop="@dimen/round_insights_48dp"
+        android:hint="@string/round_insights_login_username" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/round_insights_16dp"
+        android:layout_marginTop="@dimen/round_insights_12dp"
+        android:hint="@string/round_insights_login_password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/round_insights_16dp"
+        android:layout_marginTop="@dimen/round_insights_36dp"
+        android:text="@string/round_insights_login_button" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/round_insights_12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/round_insights_login_no_account" />
+
+        <TextView
+            android:id="@+id/login_button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/round_insights_4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:textColor="@color/round_insights_blue"
+            android:textStyle="bold"
+            android:text="@string/round_insights_login_register" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</LinearLayout>

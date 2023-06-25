@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.round.insights.app.championship.view.ChampionshipActivity"
+            android:name=".app.login.view.RoundInsightsLoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.round.insights.app.championship.view.ChampionshipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".app.register.view.RoundInsightsRegisterActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

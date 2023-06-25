@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Round Insights</string>
 
+    <string name="round_insights_login_username">Username</string>
+    <string name="round_insights_login_password">Password</string>
+    <string name="round_insights_login_button">ENTRAR</string>
+    <string name="round_insights_login_no_account">Não tem conta?</string>
+    <string name="round_insights_login_register">CADASTRE-SE</string>
+
+    <string name="round_insights_register_subtitle">Crie sua conta e divirta-se</string>
+    <string name="round_insights_register_have_account">Já tem uma conta?</string>
+    <string name="round_insights_register_login">ENTRE</string>
+    <string name="round_insights_register_button">CADASTRAR</string>
+
     <string name="round_insights_championship_title">Round Insights</string>
     <string name="round_insights_championship_description">Quais são os favoritos ao título? \nQuais correm risco de cair? \nNavegue, veja as informações e faça a sua avaliação</string>
     <string name="round_insights_championship_button">Brasileirão 2023</string>
@@ -9,7 +20,6 @@
     <string name="round_insights_footer_championship_round">Rodadas</string>
     <string name="round_insights_footer_championships_profile">Perfil</string>
     <string name="round_insights_menu_championships_brasileirao_2023">Brasileirão 2023</string>
-
 
     <string name="round_insights_round_matches_round_number">RODADA %s</string>
 </resources>
