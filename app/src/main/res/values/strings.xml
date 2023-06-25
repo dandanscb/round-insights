@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Round Insights</string>
 
-    <string name="round_insights_login_username">Username</string>
+    <string name="round_insights_login_username">Email</string>
     <string name="round_insights_login_password">Password</string>
     <string name="round_insights_login_button">ENTRAR</string>
     <string name="round_insights_login_no_account">Não tem conta?</string>

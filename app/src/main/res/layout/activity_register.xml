@@ -23,7 +23,7 @@
         android:textSize="@dimen/round_insights_16sp" />
 
     <EditText
-        android:id="@+id/register_username"
+        android:id="@+id/register_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/round_insights_16dp"
