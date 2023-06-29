@@ -26,8 +26,8 @@ object RoundMatchesMapperImpl {
                 MatchesModel(
                     homeTeam = convertTeamResponseToModel(response.time_mandante),
                     outTeam = convertTeamResponseToModel(response.time_visitante),
-                    matchDate = response.data_realizacao,
-                    matchHour = response.hora_realizacao,
+                    matchDate = response.data_realizacao ?: "",
+                    matchHour = response.hora_realizacao ?: "",
                     stadium = convertStadiumResponseToModel(response.estadio)
                 )
             )
@@ -43,8 +43,8 @@ object RoundMatchesMapperImpl {
         teamCrest = teamResponse.escudo
     )
 
-    private fun convertStadiumResponseToModel(stadiumResponse: StadiumResponse) = StadiumModel(
-        stadiumId = stadiumResponse.estadio_id,
-        stadiumName = stadiumResponse.nome_popular
+    private fun convertStadiumResponseToModel(stadiumResponse: StadiumResponse?) = StadiumModel(
+        stadiumId = stadiumResponse?.estadio_id,
+        stadiumName = stadiumResponse?.nome_popular ?: ""
     )
 }

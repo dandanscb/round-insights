@@ -71,7 +71,7 @@ class RoundInsightsLoginActivity : AppCompatActivity() {
                     nickname = it.data?.get("nickname")?.toString() ?: "",
                     email = it.data?.get("email")?.toString() ?: ""
                 )
-                val intent = Intent(this, ChampionshipActivity::class.java)
+                val intent = ChampionshipActivity.newInstance(this, user)
                 startActivity(intent)
             }
         }

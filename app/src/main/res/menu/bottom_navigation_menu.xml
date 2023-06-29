@@ -8,5 +8,5 @@
         android:icon="@drawable/ic_round"/>
     <item android:title="@string/round_insights_footer_championship_leaderboard"
         android:id="@+id/leaderboard_footer"
-        android:icon="@drawable/ic_round"/>
+        android:icon="@drawable/ic_leaderboard"/>
 </menu>

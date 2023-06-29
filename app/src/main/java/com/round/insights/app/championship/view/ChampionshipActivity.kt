@@ -1,5 +1,7 @@
 package com.round.insights.app.championship.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -17,27 +19,69 @@ class ChampionshipActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChampionshipBinding
     private lateinit var user: RoundInsightsUser
 
+    private lateinit var profileFragment: Fragment
+    private lateinit var roundMatchesFragment: Fragment
+    private lateinit var leaderboardFragment: Fragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initExtras()
         init()
+    }
+
+    private fun initExtras() {
+        intent.extras?.let { bundle ->
+            user = bundle.get(ROUND_INSIGHTS_USER) as RoundInsightsUser
+        }
     }
 
     private fun init() {
         binding = ActivityChampionshipBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(ProfileFragment.newInstance())
+        profileFragment = ProfileFragment.newInstance(user)
+        roundMatchesFragment = RoundMatchesFragment.newInstance()
+        leaderboardFragment = LeaderboardFragment.newInstance()
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.frame_layout, profileFragment)
+            .commit()
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.frame_layout, roundMatchesFragment)
+            .commit()
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.frame_layout, leaderboardFragment)
+            .commit()
+
+        supportFragmentManager.beginTransaction()
+            .hide(profileFragment)
+            .hide(roundMatchesFragment)
+            .hide(leaderboardFragment)
+            .show(profileFragment)
+            .commit();
+
         setClickListeners()
     }
 
     private fun setClickListeners() {
         binding.bottomNavigation.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.profile_footer -> replaceFragment(ProfileFragment.newInstance())
-                R.id.round_footer -> replaceFragment(RoundMatchesFragment.newInstance())
-                R.id.leaderboard_footer -> replaceFragment(LeaderboardFragment.newInstance())
-                else -> {}
+            val selectedFragment = when (it.itemId) {
+                R.id.profile_footer -> profileFragment
+                R.id.round_footer -> roundMatchesFragment
+                R.id.leaderboard_footer -> leaderboardFragment
+                else -> {
+                    profileFragment
+                }
             }
+            supportFragmentManager.beginTransaction()
+                .hide(profileFragment)
+                .hide(roundMatchesFragment)
+                .hide(leaderboardFragment)
+                .show(selectedFragment)
+                .commit();
+
             true
         }
     }
@@ -50,9 +94,12 @@ class ChampionshipActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val ROUND_INSIGHTS_USER = "user"
+
         @JvmStatic
-        fun newInstance(user: RoundInsightsUser): AppCompatActivity = ChampionshipActivity().also() {
-            it.user = user
-        }
+        fun newInstance(context: Context, user: RoundInsightsUser): Intent =
+            Intent(context, ChampionshipActivity::class.java).apply {
+                putExtra(ROUND_INSIGHTS_USER, user)
+            }
     }
 }
